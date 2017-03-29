@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327040115) do
+ActiveRecord::Schema.define(version: 20170329035406) do
+
+  create_table "contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string   "content_one"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "course_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "course_id"
+    t.integer "content_id"
+    t.index ["content_id"], name: "index_course_contents_on_content_id", using: :btree
+    t.index ["course_id"], name: "index_course_contents_on_course_id", using: :btree
+  end
 
   create_table "courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "course_name"
@@ -19,12 +32,10 @@ ActiveRecord::Schema.define(version: 20170327040115) do
   end
 
   create_table "user_courses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "users_id"
-    t.integer  "courses_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["courses_id"], name: "index_user_courses_on_courses_id", using: :btree
-    t.index ["users_id"], name: "index_user_courses_on_users_id", using: :btree
+    t.integer "user_id"
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_user_courses_on_course_id", using: :btree
+    t.index ["user_id"], name: "index_user_courses_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -37,6 +48,4 @@ ActiveRecord::Schema.define(version: 20170327040115) do
     t.boolean  "is_admin"
   end
 
-  add_foreign_key "user_courses", "courses", column: "courses_id"
-  add_foreign_key "user_courses", "users", column: "users_id"
 end

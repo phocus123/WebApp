@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :contents
   root to: "web_app#landing"
   get '/home', to: 'web_app#landing'
   get '/login',   to: 'sessions#new'
