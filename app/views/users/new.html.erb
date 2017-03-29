@@ -1,0 +1,104 @@
+  <div id = "outer #e8eaf6 indigo lighten-5">
+    <header>
+          <nav>
+            <div class="nav-wrapper #5c6bc0 indigo lighten-1">
+              <a href="" class="brand-logo">Logo</a>
+              <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><%= link_to('Log Out', logout_path)%></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">About</a></li>
+              </ul>
+              <ul class="side-nav" id="mobile-demo">
+                <li><%= link_to('Log Out', logout_path)%></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">About</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
+
+
+    
+    <main class = "center-align">
+      <h1>Whiteboard</h1>
+
+      <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      
+      <% provide(:title, 'New Student') %>
+      <h1>Register New Student</h1>
+
+      <div class="container">
+        <div class="container">
+          <%= form_for(@user, url: signup_path) do |f| %>
+          <%= render 'shared/error_messages' %>
+            
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, class: 'line1' %>
+
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, class: 'line1' %>
+
+            <%= f.label :username %>
+            <%= f.text_field :username, class: 'line1' %>
+
+            <%= f.label :password %>
+            <%= f.text_field :password, class: 'line1' %>
+
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.text_field :password_confirmation, class: 'line1' %>
+
+            <%= f.check_box :is_admin %> 
+            <%= f.label :is_admin %>
+
+            <br><br><br><br>
+
+            <%= f.submit "Create account", class: "button" %>
+            <%= link_to "Cancel", action: "show", id:current_user, class: "button" %>
+          <% end %>
+        </div>
+      </div>
+        
+      <br class = "clearfloat" />
+    </main>
+    
+    <footer class="page-footer #5c6bc0 indigo lighten-1">
+            <div class="container">
+              <div class="row">
+                <div class="col l6 s12">
+                  <h5 class="white-text">Footer Content</h5>
+                  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <div class="container">
+              © 2017 Copyright Text
+              <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+              </div>
+            </div>
+        </footer>
+  </div>
+  <script>
+    $( document ).ready(function()
+    {
+      $('.button-collapse').sideNav(
+      {
+        });
+        
+    });
+  </script>
+
+
+

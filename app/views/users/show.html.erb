@@ -1,0 +1,112 @@
+ 	<div id = "outer #e8eaf6 indigo lighten-5">
+		<header>
+			    <nav>
+				    <div class="nav-wrapper #5c6bc0 indigo lighten-1">
+				      <a href="" class="brand-logo">Logo</a>
+				      <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				      <ul class="right hide-on-med-and-down">
+				        <li><%= link_to('Log Out', logout_path)%></li>
+				        <li><a href="">Contact</a></li>
+				        <li><a href="">About</a></li>
+				      </ul>
+				      <ul class="side-nav" id="mobile-demo">
+				        <li><%= link_to('Log Out', logout_path)%></li>
+				        <li><a href="">Contact</a></li>
+				        <li><a href="">About</a></li>
+				      </ul>
+				    </div>
+				  </nav>
+		</header>
+
+		
+		<main class = "center-align">
+			<h1>Whiteboard</h1>
+
+			<h2>Welcome <%= @user.first_name %></h2>
+
+			<% flash.each do |message_type, message| %>
+			    <div class="alert alert-<%= message_type %>">
+			    	<%= message %>
+			    </div>
+			<% end %>
+
+			<% if current_user.is_admin? %>
+		        
+		   	
+		   		<div class = "container">
+			   		<table>                         
+					  <tr>                          
+					    <th>First Name</th>
+					    <th>Last Name</th>
+					    <th>User Name</th>
+					  </tr>
+					<% @users.each do |user| %>       
+					  <tr>
+					    <td><p><%= user.first_name %></p></td> 
+					    <td><p><%= user.last_name%></p></td>
+					    <td><p><%= user.username%></p></td> 
+					    <td><p><%= link_to "Edit", edit_user_path(user) %></p></td> 
+					    <td><%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" } %></td>   
+					  </tr>
+					<% end %> 
+					<td><p><%= link_to "Create new user", new_user_path %></p></td>                        
+					</table>
+				</div>
+				
+		   		
+		    <% end %>
+
+		    <% if current_user.is_admin? == false %>
+		    	<table class = "container">
+		    		<tr>                          
+					    <th>Course Name</th>
+					    
+					  </tr>
+
+		    		<% @user_courses.each do |c| %>       
+					  <tr>
+					    <td><p><%= link_to c.course_name, users_path  %></p></td>
+					  </tr>
+					<% end %> 
+				
+		    	
+		    	</table>
+		   	<% end %>
+			<br class = "clearfloat" />
+		</main>
+		
+		<footer class="page-footer #5c6bc0 indigo lighten-1">
+	          <div class="container">
+	            <div class="row">
+	              <div class="col l6 s12">
+	                <h5 class="white-text">Footer Content</h5>
+	                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+	              </div>
+	              <div class="col l4 offset-l2 s12">
+	                <h5 class="white-text">Links</h5>
+	                <ul>
+	                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+	                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+	                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+	                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+	                </ul>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="footer-copyright">
+	            <div class="container">
+	            © 2017 Copyright Text
+	            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+	            </div>
+	          </div>
+        </footer>
+	</div>
+	<script>
+	$( document ).ready(function()
+	{
+		$('.button-collapse').sideNav(
+		{
+	    });
+	    
+	});
+	</script>
