@@ -8,6 +8,9 @@ class SessionsController < ApplicationController
 			if user[:is_admin]
 				log_in user
 				redirect_to user
+			else
+				log_in user
+				redirect_to user
 			end
 		else
 		flash.now[:notice] = 'Invalid email/password combination' 
