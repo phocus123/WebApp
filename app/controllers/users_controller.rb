@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :admin_user, only: [:index, :edit, :update, :new, :destroy, :create, :new]
+  before_action :admin_user, only: [:edit, :update, :new, :destroy, :create]
   
   def show
   	@user = User.find(params[:id])
     @users = User.all
-    @user_courses = Course.joins(:users).where('user_id = ?', @user.id )
+    @user_courses = Course.joins(:users).where('user_id = ?', @user.id )    
   end
 
   def new

@@ -60,16 +60,13 @@
 		    	<table class = "container">
 		    		<tr>                          
 					    <th>Course Name</th>
-					    
-					  </tr>
+					</tr>
+		    		<% @user_courses.each do |uc| %>
+		    		   <tr>
+							<td><p><%= link_to uc.course_name, user_content_path(@user, uc.id) %></p></td>	
+						</tr>
+					<% end %>  
 
-		    		<% @user_courses.each do |c| %>       
-					  <tr>
-					    <td><p><%= link_to c.course_name, users_path  %></p></td>
-					  </tr>
-					<% end %> 
-				
-		    	
 		    	</table>
 		   	<% end %>
 			<br class = "clearfloat" />

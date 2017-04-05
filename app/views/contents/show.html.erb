@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Content one:</strong>
-  <%= @content.content_one %>
+  <% @course_content.each do |cc| %>
+  	<%= cc.content_one%>
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_content_path(@content) %> |
-<%= link_to 'Back', contents_path %>
+<%= link_to 'Edit', edit_user_content_path(@content) %> |
+

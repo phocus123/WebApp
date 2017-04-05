@@ -1,15 +1,14 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_content, :logged_in_user, only: [:show]
 
-  # GET /contents
-  # GET /contents.json
   def index
     @contents = Content.all
   end
-
   # GET /contents/1
   # GET /contents/1.json
   def show
+    @content = Content.find(params[:id])
+    @course_content = Content.joins(:courses).where('course_id = ?', @content)
   end
 
   # GET /contents/new
@@ -70,5 +69,12 @@ class ContentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
       params.require(:content).permit(:content_one)
+    end
+
+     def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
     end
 end
