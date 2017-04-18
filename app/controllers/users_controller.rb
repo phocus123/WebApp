@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :admin_user, only: [:edit, :update, :new, :destroy, :create]
+  before_action :logged_in_user, only: [:show]
+  before_action :correct_user, only: [:show]
   
   def show
   	@user = User.find(params[:id])
@@ -14,7 +16,6 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   		if @user.save
-        flash[:notice] = "User created"
         redirect_to action: "show", id:current_user
   		else
   			render 'new'
@@ -28,7 +29,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
       if@user.update_attributes(user_params)
-        flash[:notice] = "User information updated"
         redirect_to action: "show", id:current_user
       else
         render 'edit'
@@ -37,7 +37,6 @@ class UsersController < ApplicationController
 
   def destroy
    User.find(params[:id]).destroy
-   flash[:notice] = "User deleted"
         redirect_to action: "show", id:current_user
   end  
 
@@ -47,11 +46,15 @@ class UsersController < ApplicationController
   		params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :is_admin)
   	end
 
-    def logged_in_user
+    def logged_in_user 
       unless logged_in?
-        flash[:danger] = "Please log in."
         redirect_to login_url
       end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(login_url) unless @user == current_user
     end
 
     def admin_user

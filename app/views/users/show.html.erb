@@ -1,7 +1,7 @@
- 	<div id = "outer #e8eaf6 indigo lighten-5">
+ 	<div id = "outer">
 		<header>
 			    <nav>
-				    <div class="nav-wrapper #5c6bc0 indigo lighten-1">
+				    <div class="nav-wrapper #448aff blue accent-2">
 				      <a href="" class="brand-logo">Logo</a>
 				      <a href="" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 				      <ul class="right hide-on-med-and-down">
@@ -31,9 +31,7 @@
 			<% end %>
 
 			<% if current_user.is_admin? %>
-		        
-		   	
-		   		<div class = "container">
+		        <div class = "container">
 			   		<table>                         
 					  <tr>                          
 					    <th>First Name</th>
@@ -52,8 +50,6 @@
 					<td><p><%= link_to "Create new user", new_user_path %></p></td>                        
 					</table>
 				</div>
-				
-		   		
 		    <% end %>
 
 		    <% if current_user.is_admin? == false %>
@@ -72,7 +68,7 @@
 			<br class = "clearfloat" />
 		</main>
 		
-		<footer class="page-footer #5c6bc0 indigo lighten-1">
+		<footer class="page-footer #448aff blue accent-2">
 	          <div class="container">
 	            <div class="row">
 	              <div class="col l6 s12">
@@ -90,6 +86,7 @@
 	              </div>
 	            </div>
 	          </div>
+	          <br><br><br><br><br><br>
 	          <div class="footer-copyright">
 	            <div class="container">
 	            © 2017 Copyright Text
