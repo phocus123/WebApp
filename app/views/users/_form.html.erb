@@ -1,0 +1,48 @@
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'line1' %>  
+    
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'line1' %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'line1' %>
+
+    <%= f.label :password %>
+    <%= f.text_field :password, class: 'line1' %>
+
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.text_field :password_confirmation, class: 'line1' %>
+
+    <%= f.check_box :is_admin %> 
+    <%= f.label :is_admin %>
+
+    <h4>Course Enrollment</h4>
+
+    <% if local_assigns.has_key?(:courses) %>
+      <%= f.collection_check_boxes :course_ids, courses, :id, :course_name do |c| %>
+        <%= c.check_box %>
+        <%= c.label %>
+        <br>
+      <% end %>
+    <% end %>
+    
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

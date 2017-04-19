@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_content, :logged_in_user, only: [:show]
+  before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
     @contents = Content.all
@@ -18,6 +18,7 @@ class ContentsController < ApplicationController
 
   # GET /contents/1/edit
   def edit
+    @content = Content.find(params[:id])
   end
 
   # POST /contents
@@ -25,39 +26,30 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
 
-    respond_to do |format|
       if @content.save
-        format.html { redirect_to @content, notice: 'Content was successfully created.' }
-        format.json { render :show, status: :created, location: @content }
+        redirect_to controller: 'users', action: "show", id:current_user
       else
-        format.html { render :new }
-        format.json { render json: @content.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
+    
   end
 
   # PATCH/PUT /contents/1
   # PATCH/PUT /contents/1.json
   def update
-    respond_to do |format|
       if @content.update(content_params)
-        format.html { redirect_to @content, notice: 'Content was successfully updated.' }
-        format.json { render :show, status: :ok, location: @content }
+        redirect_to controller: 'users', action: "show", id:current_user
       else
-        format.html { render :edit }
-        format.json { render json: @content.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
+    
   end
 
   # DELETE /contents/1
   # DELETE /contents/1.json
   def destroy
     @content.destroy
-    respond_to do |format|
-      format.html { redirect_to contents_url, notice: 'Content was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to controller: 'users', action: "show", id:current_user
   end
 
   private

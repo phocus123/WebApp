@@ -28,33 +28,9 @@
 
       <div class="container">
         <div class="container">
-          <%= form_for(@user) do |f| %>
-            <%= render 'shared/error_messages' %>
-            
-            <%= f.label :first_name %>
-            <%= f.text_field :first_name, class: 'line1' %>
-
-            <%= f.label :last_name %>
-            <%= f.text_field :last_name, class: 'line1' %>
-
-            <%= f.label :username %>
-            <%= f.text_field :username, class: 'line1' %>
-
-            <%= f.label :password %>
-            <%= f.text_field :password, class: 'line1' %>
-
-            <%= f.label :password_confirmation, "Confirmation" %>
-            <%= f.text_field :password_confirmation, class: 'line1' %>
-
-            <%= f.check_box :is_admin %> 
-            <%= f.label :is_admin %>
-            
-
-            <br><br><br><br>
-
-            <%= f.submit "Save changes", class: "button" %>
-            <%= link_to "Cancel", action: "show", id:current_user, class: "button" %>
-          <% end %>
+        
+          <%= render 'form', user: @user %>
+          <%= link_to "Cancel", action: "show", id:current_user %>
 
         </div>
       </div>

@@ -6,11 +6,15 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @users = User.all
-    @user_courses = Course.joins(:users).where('user_id = ?', @user.id )    
+    @user_courses = Course.joins(:users).where('user_id = ?', @user.id )   
+    @courses = Course.all 
+    @contents = Content.all
   end
 
   def new
   	@user = User.new
+
+    render locals: { courses: Course.all }
   end
 
   def create
@@ -24,6 +28,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
   end
 
   def update
@@ -41,9 +46,8 @@ class UsersController < ApplicationController
   end  
 
   private
-
   	def user_params
-  		params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :is_admin)
+  		params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :is_admin, course_ids: [])
   	end
 
     def logged_in_user 

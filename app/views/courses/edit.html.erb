@@ -1,5 +1,5 @@
-  <div id = "outer">
-    <header>
+<div id = "outer">
+   <header>
           <nav>
             <div class="nav-wrapper #448aff blue accent-2">
               <a href="" class="brand-logo">Logo</a>
@@ -18,26 +18,21 @@
           </nav>
     </header>
 
-
     
     <main class = "center-align">
       <h1>Whiteboard</h1>
 
-      <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      
-      <h1>Register New Student</h1>
+  
 
       <div class="container">
         <div class="container">
-          <%= render partial: 'form', locals: { user: @user, courses: courses } %>
+            <%= render 'form', course: @course %>
+            <%= link_to "Cancel", controller: 'users', action: 'show', id:current_user %>
           
-          <%= link_to "Cancel", action: "show", id:current_user %>
-          
+
         </div>
       </div>
-        
+
       <br class = "clearfloat" />
     </main>
     
@@ -76,6 +71,4 @@
         
     });
   </script>
-
-
 

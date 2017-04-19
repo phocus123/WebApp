@@ -32,22 +32,61 @@
 
 			<% if current_user.is_admin? %>
 		        <div class = "container">
-			   		<table>                         
-					  <tr>                          
-					    <th>First Name</th>
-					    <th>Last Name</th>
-					    <th>User Name</th>
-					  </tr>
-					<% @users.each do |user| %>       
-					  <tr>
-					    <td><p><%= user.first_name %></p></td> 
-					    <td><p><%= user.last_name%></p></td>
-					    <td><p><%= user.username%></p></td> 
-					    <td><p><%= link_to "Edit", edit_user_path(user) %></p></td> 
-					    <td><%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" } %></td>   
-					  </tr>
-					<% end %> 
-					<td><p><%= link_to "Create new user", new_user_path %></p></td>                        
+			   		<table> 
+			   			<h4>Students</h4>                        
+						  <tr>
+						  	<th>ID</th>                          
+						    <th>First Name</th>
+						    <th>Last Name</th>
+						    <th>User Name</th>
+						  </tr>
+						<% @users.each do |user| %>       
+						  <tr>
+						  	<td><p><%= user.id %></p></td> 
+						    <td><p><%= user.first_name %></p></td> 
+						    <td><p><%= user.last_name%></p></td>
+						    <td><p><%= user.username%></p></td> 
+						    <td><p><%= link_to "Edit", edit_user_path(user) %></p></td> 
+						    <td><%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" } %></td>   
+						  </tr>
+						<% end %> 
+						<td><p><%= link_to "Create new user", new_user_path %></p></td>                        
+					</table>
+
+					<h4>Courses</h4>  
+
+					<table>                         
+						  <tr>                          
+						    <th>Course ID</th>
+						    <th>Course Name</th>
+						  </tr>
+						<% @courses.each do |c| %>       
+						  <tr>
+						    <td><p><%= c.id %></p></td> 
+						    <td><p><%= c.course_name %></p></td>
+						    <td><p><%= link_to "Edit", edit_course_path(c) %></p></td>
+						    <td><%= link_to "Delete", c, method: :delete, data: { confirm: "Are you sure?" } %></td>   
+						  </tr>
+						<% end %>
+						<td><p><%= link_to "Create new course", new_course_path %></p></td>                        
+					</table>
+
+					<h4>Content</h4>  
+
+					<table>                         
+						  <tr>                          
+						    <th>Content ID</th>
+						    <th>Content </th>
+						  </tr>
+						<% @contents.each do |co| %>       
+						  <tr>
+						    <td><p><%= co.id %></p></td> 
+						    <td><p><%= co.content_one %></p></td>
+						    <td><p><%= link_to "Edit", edit_content_path(co) %></p></td>
+						    <td><%= link_to "Delete", co, method: :delete, data: { confirm: "Are you sure?" } %></td>   
+						  </tr>
+						<% end %>
+						<td><p><%= link_to "Create new content", new_content_path %></p></td>                        
 					</table>
 				</div>
 		    <% end %>

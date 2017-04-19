@@ -23,18 +23,13 @@
     <main class = "center-align">
       <h1>Whiteboard</h1>
 
-      <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      
-      <h1>Register New Student</h1>
+      <h1>Create new content</h1>
 
       <div class="container">
         <div class="container">
-          <%= render partial: 'form', locals: { user: @user, courses: courses } %>
-          
-          <%= link_to "Cancel", action: "show", id:current_user %>
-          
+         
+          <%= render 'form', content: @content %>
+          <%= link_to "Cancel", controller: 'users', action: 'show', id:current_user %>
         </div>
       </div>
         
