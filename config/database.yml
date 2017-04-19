@@ -25,5 +25,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: j259105
+  password: j259105
+  host: 223.27.22.124
+  port: 3306
+  database: j259105
