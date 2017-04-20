@@ -14,6 +14,16 @@
   <div class="field">
     <%= f.label :course_name %>
     <%= f.text_field :course_name %>
+
+    <h4>Add content</h4>
+
+    <% if local_assigns.has_key?(:contents) %>
+      <%= f.collection_check_boxes :content_ids, contents, :id, :content_one do |c| %>
+        <%= c.check_box %>
+        <%= c.label %>
+        <br>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="actions">

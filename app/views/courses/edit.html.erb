@@ -26,7 +26,7 @@
 
       <div class="container">
         <div class="container">
-            <%= render 'form', course: @course %>
+            <%= render partial: 'form', locals: { course: @course, contents: contents } %>
             <%= link_to "Cancel", controller: 'users', action: 'show', id:current_user %>
           
 
