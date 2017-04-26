@@ -1,8 +1,4 @@
-
-
-
-
- 	<div id = "outer #448aff blue accent-2">
+	<div id = "outer">
 		<header>
 			    <nav>
 				    <div class="nav-wrapper #448aff blue accent-2">
@@ -22,17 +18,8 @@
 				  </nav>
 		</header>
 
-		
 		<main class = "center-align">
 			<h1>Whiteboard</h1>
-
-
-			<% flash.each do |message_type, message| %>
-			    <div class="alert alert-<%= message_type %>">
-			    	<%= message %>
-			    </div>
-			<% end %>
-
 			<p>
 			  <% @course_content.each do |cc| %>
 			  	<%= cc.content_one%>
@@ -74,7 +61,6 @@
 	{
 		$('.button-collapse').sideNav(
 		{
-	    });
-	    
+	    });   
 	});
 	</script>

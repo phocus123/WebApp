@@ -15,13 +15,11 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-
     render locals: { contents: Content.all }
   end
 
   # GET /courses/1/edit
   def edit
-    console
     @course = Course.find(params[:id])
     render locals: { contents: Content.all }
   end

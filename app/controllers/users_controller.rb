@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-
     render locals: { courses: Course.all }
   end
 

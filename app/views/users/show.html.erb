@@ -17,18 +17,11 @@
 				    </div>
 				  </nav>
 		</header>
-
 		
 		<main class = "center-align">
 			<h1>Whiteboard</h1>
 
 			<h2>Welcome <%= @user.first_name %></h2>
-
-			<% flash.each do |message_type, message| %>
-			    <div class="alert alert-<%= message_type %>">
-			    	<%= message %>
-			    </div>
-			<% end %>
 
 			<% if current_user.is_admin? %>
 		        <div class = "container">
@@ -101,7 +94,6 @@
 							<td><p><%= link_to uc.course_name, user_content_path(@user, uc.id) %></p></td>	
 						</tr>
 					<% end %>  
-
 		    	</table>
 		   	<% end %>
 			<br class = "clearfloat" />
@@ -140,6 +132,5 @@
 		$('.button-collapse').sideNav(
 		{
 	    });
-	    
 	});
 	</script>
