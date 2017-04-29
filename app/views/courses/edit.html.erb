@@ -18,18 +18,13 @@
           </nav>
     </header>
 
-    
     <main class = "center-align">
       <h1>Whiteboard</h1>
-
-  
 
       <div class="container">
         <div class="container">
             <%= render partial: 'form', locals: { course: @course, contents: contents } %>
             <%= link_to "Cancel", controller: 'users', action: 'show', id:current_user %>
-          
-
         </div>
       </div>
 
@@ -62,13 +57,3 @@
             </div>
         </footer>
   </div>
-  <script>
-    $( document ).ready(function()
-    {
-      $('.button-collapse').sideNav(
-      {
-        });
-        
-    });
-  </script>
-

@@ -1,12 +1,6 @@
 class CoursesController < ApplicationController
   before_action :admin_user, only: [:edit, :update, :new, :destroy, :create]
 
-  # GET /courses
-  # GET /courses.json
-  def index
-    @courses = Course.all
-  end
-
   # GET /courses/1
   # GET /courses/1.json
   def show
@@ -33,7 +27,6 @@ class CoursesController < ApplicationController
       else
         render 'new'
       end
-  
   end
 
   # PATCH/PUT /courses/1
@@ -45,7 +38,6 @@ class CoursesController < ApplicationController
       else
         render 'new'
       end
-    
   end
 
   # DELETE /courses/1
@@ -56,10 +48,6 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params

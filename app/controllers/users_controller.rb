@@ -2,11 +2,10 @@ class UsersController < ApplicationController
   before_action :admin_user, only: [:edit, :update, :new, :destroy, :create]
   before_action :logged_in_user, only: [:show]
   before_action :correct_user, only: [:show]
-  
   def show
   	@user = User.find(params[:id])
     @users = User.all
-    @user_courses = Course.joins(:users).where('user_id = ?', @user.id )   
+    @user_courses = Course.joins(:users).where('user_id = ?', @user.id)   
     @courses = Course.all 
     @contents = Content.all
   end

@@ -1,12 +1,6 @@
 class UserCoursesController < ApplicationController
   before_action :set_user_course, only: [:show, :edit, :update, :destroy]
 
-  # GET /user_courses
-  # GET /user_courses.json
-  def index
-    @user_courses = UserCourse.all
-  end
-
   # GET /user_courses/1
   # GET /user_courses/1.json
   def show

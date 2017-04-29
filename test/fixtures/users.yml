@@ -1,9 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+mark:
+  username: mschafers
+  first_name: mark
+  last_name: schafers
+  password_digest: $2a$10$KQj0gShH2tN868ev8LjxDOFwWc7RQbf5QoZE962AuLzb0lC6GT2Xy
+  is_admin: true
 
-one:
-  username: MyString
-  password: MyString
-
-two:
-  username: MyString
-  password: MyString

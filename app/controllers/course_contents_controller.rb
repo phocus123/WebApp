@@ -1,12 +1,5 @@
 class CourseContentsController < ApplicationController
   before_action :set_course_content, only: [:show, :edit, :update, :destroy]
-
-  # GET /course_contents
-  # GET /course_contents.json
-  def index
-    @course_contents = CourseContent.all
-  end
-
   # GET /course_contents/1
   # GET /course_contents/1.json
   def show

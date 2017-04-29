@@ -1,9 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @contents = Content.all
-  end
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
   # GET /contents/1
   # GET /contents/1.json
   def show
@@ -31,23 +27,23 @@ class ContentsController < ApplicationController
       else
         render 'new'
       end
-    
   end
 
   # PATCH/PUT /contents/1
   # PATCH/PUT /contents/1.json
   def update
+    @content = Content.find(params[:id])
       if @content.update(content_params)
         redirect_to controller: 'users', action: "show", id:current_user
       else
         render 'new'
       end
-    
   end
 
   # DELETE /contents/1
   # DELETE /contents/1.json
   def destroy
+    @content = Content.find(params[:id])
     @content.destroy
     redirect_to controller: 'users', action: "show", id:current_user
   end
@@ -57,7 +53,6 @@ class ContentsController < ApplicationController
     def set_content
       @content = Content.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def content_params
       params.require(:content).permit(:content_one)
@@ -65,7 +60,6 @@ class ContentsController < ApplicationController
 
      def logged_in_user
       unless logged_in?
-        flash[:danger] = "Please log in."
         redirect_to login_url
       end
     end
