@@ -60,23 +60,13 @@
       to see more useful Rails Best Practices.
     </p>
     <p>
-        Found 12 warnings.
+        Found 8 warnings.
     </p>
     <table>
           <tr>
               <td>
-                <input type="checkbox" class="error-type" id="RemoveUnusedMethodsInControllersReview" value="RemoveUnusedMethodsInControllersReview"
-                />&nbsp;<label for="RemoveUnusedMethodsInControllersReview">Remove Unused Methods In Controllers</label>
-              </td>
-              <td>
                 <input type="checkbox" class="error-type" id="UseScopeAccessReview" value="UseScopeAccessReview"
                 />&nbsp;<label for="UseScopeAccessReview">Use Scope Access</label>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                <input type="checkbox" class="error-type" id="SimplifyRenderInViewsReview" value="SimplifyRenderInViewsReview"
-                />&nbsp;<label for="SimplifyRenderInViewsReview">Simplify Render In Views</label>
               </td>
               <td>
                 <input type="checkbox" class="error-type" id="RemoveTrailingWhitespaceCheck" value="RemoveTrailingWhitespaceCheck"
@@ -99,51 +89,6 @@
         </tr>
       </thead>
       <tbody>
-          <tr class="RemoveUnusedMethodsInControllersReview">
-            <td class='filename'>
-                app/controllers/contents_controller.rb
-            </td>
-            <td class='line'>53</td>
-            <td class='message'>
-              <a href='' target='_blank'>remove unused methods (ContentsController#set_content)</a>
-            </td>
-          </tr>
-          <tr class="SimplifyRenderInViewsReview">
-            <td class='filename'>
-                app/views/courses/edit.html.erb
-            </td>
-            <td class='line'>26</td>
-            <td class='message'>
-              <a href='http://rails-bestpractices.com/posts/2010/12/04/simplify-render-in-views/' target='_blank'>simplify render in views</a>
-            </td>
-          </tr>
-          <tr class="SimplifyRenderInViewsReview">
-            <td class='filename'>
-                app/views/courses/new.html.erb
-            </td>
-            <td class='line'>27</td>
-            <td class='message'>
-              <a href='http://rails-bestpractices.com/posts/2010/12/04/simplify-render-in-views/' target='_blank'>simplify render in views</a>
-            </td>
-          </tr>
-          <tr class="SimplifyRenderInViewsReview">
-            <td class='filename'>
-                app/views/users/edit.html.erb
-            </td>
-            <td class='line'>26</td>
-            <td class='message'>
-              <a href='http://rails-bestpractices.com/posts/2010/12/04/simplify-render-in-views/' target='_blank'>simplify render in views</a>
-            </td>
-          </tr>
-          <tr class="SimplifyRenderInViewsReview">
-            <td class='filename'>
-                app/views/users/new.html.erb
-            </td>
-            <td class='line'>27</td>
-            <td class='message'>
-              <a href='http://rails-bestpractices.com/posts/2010/12/04/simplify-render-in-views/' target='_blank'>simplify render in views</a>
-            </td>
-          </tr>
           <tr class="UseScopeAccessReview">
             <td class='filename'>
                 app/controllers/users_controller.rb
@@ -164,18 +109,9 @@
           </tr>
           <tr class="RemoveTrailingWhitespaceCheck">
             <td class='filename'>
-                app/views/contents/show.html.erb
-            </td>
-            <td class='line'>62</td>
-            <td class='message'>
-              <a href='http://rails-bestpractices.com/posts/2010/12/02/remove-trailing-whitespace/' target='_blank'>remove trailing whitespace</a>
-            </td>
-          </tr>
-          <tr class="RemoveTrailingWhitespaceCheck">
-            <td class='filename'>
                 app/views/courses/edit.html.erb
             </td>
-            <td class='line'>33</td>
+            <td class='line'>34</td>
             <td class='message'>
               <a href='http://rails-bestpractices.com/posts/2010/12/02/remove-trailing-whitespace/' target='_blank'>remove trailing whitespace</a>
             </td>
@@ -191,9 +127,27 @@
           </tr>
           <tr class="RemoveTrailingWhitespaceCheck">
             <td class='filename'>
+                app/views/sessions/new.html.erb
+            </td>
+            <td class='line'>33</td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/2010/12/02/remove-trailing-whitespace/' target='_blank'>remove trailing whitespace</a>
+            </td>
+          </tr>
+          <tr class="RemoveTrailingWhitespaceCheck">
+            <td class='filename'>
+                app/views/users/edit.html.erb
+            </td>
+            <td class='line'>24</td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/2010/12/02/remove-trailing-whitespace/' target='_blank'>remove trailing whitespace</a>
+            </td>
+          </tr>
+          <tr class="RemoveTrailingWhitespaceCheck">
+            <td class='filename'>
                 app/views/users/show.html.erb
             </td>
-            <td class='line'>28</td>
+            <td class='line'>27</td>
             <td class='message'>
               <a href='http://rails-bestpractices.com/posts/2010/12/02/remove-trailing-whitespace/' target='_blank'>remove trailing whitespace</a>
             </td>

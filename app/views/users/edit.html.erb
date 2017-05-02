@@ -21,11 +21,10 @@
     <main class = "center-align full-height main">
       <h1 class = "t-shadow">Whiteboard</h1>
       <h4 class = "t-shadow">Edit Student</h4>
-
-
+      
       <div class="container">
         <div class="container">
-          <%= render partial: 'form', locals: { user: @user, courses: courses } %>
+          <%= render 'form', user: @user, courses: courses %>
           <%= link_to "Cancel", action: "show", id:current_user %>
         </div>
       </div>
