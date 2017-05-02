@@ -30,7 +30,7 @@
     <%= f.check_box :is_admin %> 
     <%= f.label :is_admin %>
 
-    <h4>Course Enrollment</h4>
+    <h4 class = "t-shadow">Course Enrollment</h4>
 
     <% if local_assigns.has_key?(:courses) %>
       <%= f.collection_check_boxes :course_ids, courses, :id, :course_name do |c| %>

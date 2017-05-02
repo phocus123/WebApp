@@ -15,7 +15,7 @@
     <%= f.label :course_name %>
     <%= f.text_field :course_name %>
 
-    <h4>Add content</h4>
+    <h4 class = "t-shadow">Add Content</h4>
 
     <% if local_assigns.has_key?(:contents) %>
       <%= f.collection_check_boxes :content_ids, contents, :id, :content_one do |c| %>

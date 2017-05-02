@@ -1,0 +1,104 @@
+@import "options";
+@import "mixins";
+@import "hacks";
+
+@mixin shutter-out-horizontal {
+	@include hacks();
+	position: relative;
+	background: $primaryColor;
+	@include prefixed(transition-property, color);
+	@include prefixed(transition-duration, $mediumDuration);
+
+	&:before {
+		height:20px;
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: $activeColor;
+		opacity: 0.3;
+		@include prefixed(transform, scaleX(0));
+		@include prefixed(transform-origin, 50%);
+		@include prefixed(transition-property, transform);
+		@include prefixed(transition-duration, $mediumDuration);
+		@include prefixed(transition-timing-function, ease-out);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: white;
+
+		&:before {
+			@include prefixed(transform, scaleX(1));
+		}
+	}
+}
+
+
+%box-shadow{
+	-webkit-box-shadow: 0px 0px 80px 0px rgba(0,0,0,0.99);
+	-moz-box-shadow: 0px 0px 80px 0px rgba(0,0,0,0.99);
+	box-shadow: 0px 0px 80px 0px rgba(0,0,0,0.99);
+}
+
+%text-shadow{
+	text-shadow: -2px 2px 15px rgba(150, 150, 150, 1);
+}
+
+.full-height {
+    height: 100%;
+    min-height: 900px !important;
+}
+
+.outer{
+	background-color: #ebebe0;
+}
+
+.main{
+	padding-top:20px;
+	max-width:1020px;
+	margin: 0 auto;
+	background-color: #ffffff;
+	@extend	%box-shadow;
+}
+
+.image-margins{
+	margin-left:10px;
+	margin-top:10px;
+}
+
+.nav-height{
+	height:100px;
+}
+
+.t-shadow{
+	@extend %text-shadow;
+}
+
+.shutter-out-horizontal{
+	@include shutter-out-horizontal;
+}
+
+.table-border{}
+
+@each $socnet in facebook, digg, deviantart, forrst, lastfm {
+            a.icon-#{$socnet} {
+            padding: 5px 20px 20px; color: #8B4513;
+            display: inline;
+            background: url('/assets/icon-#{$socnet}.png')
+            no-repeat left top; width: 100px;
+            font-weight: bold; font-size: 24px;
+            text-decoration: none;
+            &:hover {
+            	  text-decoration: underline;
+            	}
+			}
+}
+
+
+
+
