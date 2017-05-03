@@ -12,6 +12,7 @@
  *@import web_app.scss
  *= require_self
  *= require_tree 
- */
+ */ 
+$navbar-font-size: 1.5rem !default;
 @import "materialize";
 @import "custom";
