@@ -3,7 +3,11 @@ class ContentsController < ApplicationController
   # GET /contents/1
   # GET /contents/1.json
   def show
-    @content = Content.find(params[:id])
+    begin
+      @content = Content.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
     @course_content = Content.joins(:courses).where('course_id = ?', @content)
   end
 
@@ -14,7 +18,11 @@ class ContentsController < ApplicationController
 
   # GET /contents/1/edit
   def edit
-    @content = Content.find(params[:id])
+    begin
+      @content = Content.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
   end
 
   # POST /contents
@@ -32,7 +40,11 @@ class ContentsController < ApplicationController
   # PATCH/PUT /contents/1
   # PATCH/PUT /contents/1.json
   def update
-    @content = Content.find(params[:id])
+    begin
+      @content = Content.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
       if @content.update(content_params)
         redirect_to controller: 'users', action: "show", id:current_user
       else
@@ -43,8 +55,11 @@ class ContentsController < ApplicationController
   # DELETE /contents/1
   # DELETE /contents/1.json
   def destroy
-    @content = Content.find(params[:id])
-    @content.destroy
+    begin
+      @content = Content.find(params[:id]).destroy
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
     redirect_to controller: 'users', action: "show", id:current_user
   end
 

@@ -14,7 +14,11 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course = Course.find(params[:id])
+    begin
+      @course = Course.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
     render locals: { contents: Content.all }
   end
 
@@ -32,7 +36,11 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
-    @course = Course.find(params[:id])
+    begin
+      @course = Course.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
       if @course.update(course_params)
          redirect_to controller: 'users', action: "show", id:current_user
       else
@@ -43,7 +51,11 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    Course.find(params[:id]).destroy
+    begin
+      @course = Course.find(params[:id]).destroy
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
       redirect_to controller: 'users', action: "show", id:current_user
   end
 

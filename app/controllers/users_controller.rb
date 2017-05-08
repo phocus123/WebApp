@@ -3,11 +3,21 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show]
   before_action :correct_user, only: [:show]
   def show
-  	@user = User.find(params[:id])
-    @users = User.all
-    @user_courses = Course.joins(:users).where('user_id = ?', @user.id)   
-    @courses = Course.all 
-    @contents = Content.all
+     @users = User.all
+     @courses = Course.all 
+     @contents = Content.all
+
+    begin
+  	  @user = User.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
+
+    begin
+      @user_courses = Course.joins(:users).where('user_id = ?', @user.id)
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
   end
 
   def new
@@ -26,12 +36,20 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
     render locals: { courses: Course.all }
   end
 
   def update
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
       if@user.update_attributes(user_params)
         redirect_to action: "show", id:current_user
       else
@@ -40,7 +58,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-   User.find(params[:id]).destroy
+   begin
+      @user = User.find(params[:id]).destroy
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
         redirect_to action: "show", id:current_user
   end  
 
@@ -56,7 +78,11 @@ class UsersController < ApplicationController
     end
 
     def correct_user
+      begin
       @user = User.find(params[:id])
+    rescue StandardError => e
+      puts "Error: #{e}"
+    end
       redirect_to(login_url) unless @user == current_user
     end
 
